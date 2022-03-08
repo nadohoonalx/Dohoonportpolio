@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Register">
+
+
+    <select id="selectFileGroupKey" parameterType="map" resultType="string">
+ 
+ 
+ 	/*********************************/
+ 	/*파일그룹키 조회*/
+ 	
+ 	/*SQL ID : board.selectFileGroupKey*/
+ 	/********************************* 이런식으로 관리를 해야한다.*/
+      
+     SELECT SYS_GUID()
+       FROM DUAL
+         
+	</select>
+	
+	 <select id="checkWriter" parameterType="hashmap" resultType="int">
+    /***************************/
+	/*회원 정보 등록  */
+	/*SQL ID : Register.checkId*/
+	/* *************************** */
+    
+    	SELECT count(*)
+    	  FROM MEMBERTBL
+    	 WHERE WRITER = #{writer}
+    
+    </select>
+    
+    <insert id="insertMember">
+      INSERT INTO MEMBERS ( WRITER
+                          , NAME
+                          , EMAIL
+                          , PASSWORD
+                          , AUTHGROUPCODE )
+                   VALUES ( #{WRITER}
+                    	  , #{PASSWORD}
+                          , #{NAME}
+                          , #{EMAIL}
+                          , #{AUTHGROUPCODE})
+    </insert>
+    
+
+	
+	
+</mapper>
